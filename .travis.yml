@@ -1,0 +1,14 @@
+sudo: required
+
+language: node_js
+
+before_install:
+  - yarn
+
+node_js:
+  - "8"
+  - "11"
+
+script:
+  - npm run lint
+  - npm run test
