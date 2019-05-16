@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "lib": ["es5", "dom", "es6"],
+    "outDir": "./lib",
+    "sourceMap": true,
+    "allowJs": false,
+    "baseUrl": ".",
+    "jsx": "react",
+    "jsxFactory": "createElement",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  }
+}

@@ -1,35 +1,29 @@
 {
   "name": "universal-env",
-  "version": "0.7.0",
-  "description": "A universal environment utilities.",
-  "license": "BSD-3-Clause",
-  "main": "lib/index.js",
+  "author": "rax",
+  "version": "0.0.0",
+  "main": "lib/src/index.js",
   "scripts": {
     "start": "rax-scripts start --type 'component' -p 8000",
-    "build": "rax-scripts build",
-    "test": "jest",
-    "lint": "rax-scripts lint"
+    "build": "rax-scripts build --type 'component'",
+    "test": "rax-scripts test",
+    "lint": "eslint --ext .js --ext .jsx --ext .ts --ext .tsx ./src",
+    "prebuild": "yarn run lint && yarn run test",
+    "prepublish": "yarn run build"
   },
-  "keywords": [
-    "universal"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/raxjs/universal-easing.git"
-  },
-  "bugs": {
-    "url": "https://github.com/alibaba/rax/issues"
-  },
-  "homepage": "https://github.com/alibaba/rax#readme",
+  "dependencies": {},
   "devDependencies": {
-    "@babel/core": "7.2.0",
-    "@babel/preset-env": "7.2.0",
-    "babel-jest": "^23.6.0",
-    "babel-eslint": "10.0.1",
-    "jest": "^23.6.0",
-    "jest-localstorage-mock": "^2.3.0"
-  },
-  "dependencies": {
-    "ace-scripts": "0.0.7"
+    "@types/jest": "^24.0.12",
+    "@typescript-eslint/eslint-plugin": "^1.7.0",
+    "@typescript-eslint/parser": "^1.7.0",
+    "babel-eslint": "^10.0.1",
+    "driver-dom": "^1.0.0",
+    "eslint": "^5.15.1",
+    "eslint-config-rax": "^0.0.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-react": "^7.12.4",
+    "rax": "^1.0.4",
+    "rax-scripts": "^1.2.0",
+    "typescript": "^3.4.5"
   }
 }
