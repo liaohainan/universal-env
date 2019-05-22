@@ -1,9 +1,5 @@
 module.exports = {
-  "extends": ["eslint-config-rax/typescript"],
-  "globals": {
-    "__fbBatchedBridgeConfig": false,
-    "callNative": false,
-    "WXEnvironment": false,
-  },
-  "rules": {}
+  extends: ['eslint-config-rax/react', 'eslint-config-rax/typescript'],
+  globals: {},
+  rules: {}
 };

@@ -1,4 +1,4 @@
-import { isWeb, isNode, isMiniApp, isReactNative } from '../';
+import { isWeb, isNode, isMiniApp, isReactNative } from '..';
 
 describe('environment value', (): void => {
   it('web environment value is true', (): void => {
