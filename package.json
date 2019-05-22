@@ -2,7 +2,7 @@
   "name": "universal-env",
   "author": "rax",
   "version": "0.0.0",
-  "main": "lib/src/index.js",
+  "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "miniappConfig": {
     "main": "lib/miniapp/index"
