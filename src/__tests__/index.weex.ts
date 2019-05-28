@@ -4,7 +4,7 @@
 };
 
 // eslint-disable-next-line
-const { select, isWeex, platform } = require('../index');
+const { isWeex } = require('../index');
 
 describe('platform', (): void => {
   it('weex environment value', (): void => {
