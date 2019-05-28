@@ -35,7 +35,7 @@
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-react": "^7.12.4",
     "rax": "^1.0.4",
-    "rax-scripts": "^1.2.0",
+    "rax-scripts": "1.2.1-beta.2",
     "typescript": "^3.4.5"
   }
 }
