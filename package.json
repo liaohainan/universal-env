@@ -2,6 +2,7 @@
   "name": "universal-env",
   "author": "rax",
   "version": "1.0.0-beta.1",
+  "license": "BSD-3-Clause",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "miniappConfig": {
@@ -36,5 +37,13 @@
     "rax": "^1.0.4",
     "rax-scripts": "1.2.1-beta.2",
     "typescript": "^3.4.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raxjs/universal-env"
+  },
+  "bugs": {
+    "url": "https://github.com/raxjs/universal-env/issues"
+  },
+  "homepage": "https://github.com/alibaba/rax#readme"
 }
