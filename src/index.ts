@@ -6,8 +6,9 @@ declare const my: any;
 
 const isWebPure: boolean = typeof navigator === 'object' && (navigator.appCodeName === 'Mozilla' || navigator.product === 'Gecko');
 const isMiniAppWebview: boolean = isWebPure && typeof my === 'object' && typeof my.getEnv !== 'undefined';
+const isMiniAppIDE: boolean = typeof navigator === 'object' && typeof navigator.userAgent === 'string' && navigator.userAgent.indexOf('AlipayIDE') > -1;
 export const isMiniApp: boolean = typeof my === 'object' && typeof my.getSystemInfoSync !== 'undefined';
-export const isWeb: boolean = isWebPure && !isMiniApp || isMiniAppWebview;
+export const isWeb: boolean = isWebPure && !isMiniApp || isMiniAppWebview && !isMiniAppIDE;
 export const isNode: boolean = typeof process !== 'undefined' && !!(process.versions && process.versions.node);
 export const isWeex: boolean = typeof callNative === 'function' || typeof WXEnvironment === 'object' && WXEnvironment.platform !== 'Web';
 export const isReactNative: boolean = typeof __fbBatchedBridgeConfig !== 'undefined';
