@@ -1,5 +1,7 @@
 // eslint-disable-next-line
-(global as any).my = {};
+(global as any).my = {
+  getSystemInfoSync: () => {}
+};
 
 describe('Mni app environment', (): void => {
   it('mini app environment value', (): void => {
