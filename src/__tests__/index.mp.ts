@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 (global as any).my = {
-  getSystemInfoSync: () => {}
+  getSystemInfo: () => {}
 };
 
 describe('Mni app environment', (): void => {
