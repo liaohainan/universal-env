@@ -31,3 +31,9 @@ Checks if environment is a React Native environment.
 
 ### `isNode: boolean`
 Checks if environment is a Node.js environment.
+
+### `isAndroid: boolean`
+Checks if environment is a android environment.
+
+### `isIOS: boolean`
+Checks if environment is a iOS environment.
