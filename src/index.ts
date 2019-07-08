@@ -21,9 +21,10 @@ export const isAndroid = (() => {
     return ['Android', 'android'].includes(miniAppSystemInfo.platform);
   } else if (isWeex) {
     return navigator.platform.toLowerCase() === 'android';
-  } else {
+  } else if (isWeb) {
     return Boolean(navigator.userAgent.match(/android/i));
   }
+  return false;
 })();
 
 export const isIOS = (() => {
@@ -31,7 +32,8 @@ export const isIOS = (() => {
     return ['iPhone OS', 'iOS'].includes(miniAppSystemInfo.platform);
   } else if (isWeex) {
     return navigator.platform.toLowerCase() === 'ios';
-  } else {
+  } else if (isWeb) {
     return Boolean(navigator.userAgent.match(/(iphone|ipod|ipad)/i));
   }
+  return false;
 })();
