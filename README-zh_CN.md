@@ -18,16 +18,22 @@ import { isWeex, isWeb, isMiniApp, isReactNative, isNode } from 'universal-env';
 
 ## APIS
 ### `isWeex: boolean`
-校验weex环境
+校验 Weex 环境
 
 ### `isWeb: boolean`
-校验web环境
+校验 Web 环境
 
 ### `isMiniApp: boolean`
 校验小程序环境
 
 ### `isReactNative: boolean`
-校验React Native环境
+校验 React Native 环境
 
 ### `isNode: boolean`
-校验Node.js环境
+校验 Node.js 环境
+
+### `isAndroid: boolean`
+校验 Android 环境
+
+### `isIOS: boolean`
+校验 iOS 环境
