@@ -11,7 +11,7 @@ export const isWeex: boolean = typeof callNative === 'function' || typeof WXEnvi
 export const isReactNative: boolean = typeof __fbBatchedBridgeConfig !== 'undefined';
 export const isMiniApp: boolean = typeof my === 'object' && typeof my.getSystemInfo !== 'undefined';
 export const isWechatApp: boolean = typeof wx === 'object' && typeof wx.getSystemInfo !== 'undefined';
-export const isWeb: boolean = isWebPure && !isMiniApp;
+export const isWeb: boolean = isWebPure && !isMiniApp && !isWechatApp;
 
 let systemInfo: any = {};
 if (isMiniApp) {
@@ -35,7 +35,7 @@ export const isAndroid = (() => {
 
 export const isIOS = (() => {
   if (isMiniApp || isWechatApp || isWeex) {
-    return systemInfo.platform.toLowerCase === 'ios';
+    return systemInfo.platform.toLowerCase === '';
   } else if (isWeb) {
     return Boolean(navigator.userAgent.match(/(iphone|ipod|ipad)/i));
   }
