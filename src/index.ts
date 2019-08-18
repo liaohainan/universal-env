@@ -3,24 +3,30 @@ declare const callNative: any;
 declare const WXEnvironment: any;
 declare const __fbBatchedBridgeConfig: any;
 declare const my: any;
+declare const wx: any;
 
 const isWebPure: boolean = typeof navigator === 'object' && (navigator.appCodeName === 'Mozilla' || navigator.product === 'Gecko');
-export const isMiniApp: boolean = typeof my === 'object' && typeof my.getSystemInfo !== 'undefined';
-export const isWeb: boolean = isWebPure && !isMiniApp;
 export const isNode: boolean = typeof process !== 'undefined' && !!(process.versions && process.versions.node);
 export const isWeex: boolean = typeof callNative === 'function' || typeof WXEnvironment === 'object' && WXEnvironment.platform !== 'Web';
 export const isReactNative: boolean = typeof __fbBatchedBridgeConfig !== 'undefined';
+export const isMiniApp: boolean = typeof my === 'object' && typeof my.getSystemInfo !== 'undefined';
+export const isWechatApp: boolean = typeof wx === 'object' && typeof wx.getSystemInfo !== 'undefined';
+export const isWeb: boolean = isWebPure && !isMiniApp;
 
-let miniAppSystemInfo: any = {};
+let systemInfo: any = {};
 if (isMiniApp) {
-  miniAppSystemInfo = my.getSystemInfoSync();
+  systemInfo = my.getSystemInfoSync();
+}
+if (isWechatApp) {
+  systemInfo = wx.getSystemInfoSync();
+}
+if (isWeex) {
+  systemInfo = navigator;
 }
 
 export const isAndroid = (() => {
-  if (isMiniApp) {
-    return ['Android', 'android'].includes(miniAppSystemInfo.platform);
-  } else if (isWeex) {
-    return navigator.platform.toLowerCase() === 'android';
+  if (isMiniApp || isWechatApp || isWeex) {
+    return systemInfo.platform.toLowerCase === 'android';
   } else if (isWeb) {
     return Boolean(navigator.userAgent.match(/android/i));
   }
@@ -28,12 +34,11 @@ export const isAndroid = (() => {
 })();
 
 export const isIOS = (() => {
-  if (isMiniApp) {
-    return ['iPhone OS', 'iOS'].includes(miniAppSystemInfo.platform);
-  } else if (isWeex) {
-    return navigator.platform.toLowerCase() === 'ios';
+  if (isMiniApp || isWechatApp || isWeex) {
+    return systemInfo.platform.toLowerCase === 'ios';
   } else if (isWeb) {
     return Boolean(navigator.userAgent.match(/(iphone|ipod|ipad)/i));
   }
   return false;
 })();
+
