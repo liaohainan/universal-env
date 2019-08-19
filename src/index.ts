@@ -35,7 +35,7 @@ export const isAndroid = (() => {
 
 export const isIOS = (() => {
   if (isMiniApp || isWechatApp || isWeex) {
-    return systemInfo.platform.toLowerCase() === 'ios';
+    return ['ios', 'iOS', 'iPhone OS'].includes(systemInfo.platform);
   } else if (isWeb) {
     return Boolean(navigator.userAgent.match(/(iphone|ipod|ipad)/i));
   }
