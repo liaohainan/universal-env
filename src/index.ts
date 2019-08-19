@@ -26,7 +26,7 @@ if (isWeex) {
 
 export const isAndroid = (() => {
   if (isMiniApp || isWechatApp || isWeex) {
-    return systemInfo.platform.toLowerCase === 'android';
+    return systemInfo.platform.toLowerCase() === 'android';
   } else if (isWeb) {
     return Boolean(navigator.userAgent.match(/android/i));
   }
@@ -35,7 +35,7 @@ export const isAndroid = (() => {
 
 export const isIOS = (() => {
   if (isMiniApp || isWechatApp || isWeex) {
-    return systemInfo.platform.toLowerCase === 'ios';
+    return systemInfo.platform.toLowerCase() === 'ios';
   } else if (isWeb) {
     return Boolean(navigator.userAgent.match(/(iphone|ipod|ipad)/i));
   }
