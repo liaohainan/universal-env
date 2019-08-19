@@ -24,7 +24,10 @@ Checks if environment is a weex environment.
 Checks if environment is a web environment.
 
 ### `isMiniApp: boolean`
-Checks if environment is a mini app environment.
+Checks if environment is an alibaba miniprogram environment.
+
+### `isWechatApp: boolean`
+Checks if environment is a wechat miniprogram environment.
 
 ### `isReactNative: boolean`
 Checks if environment is a React Native environment.

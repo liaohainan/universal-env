@@ -24,7 +24,10 @@ import { isWeex, isWeb, isMiniApp, isReactNative, isNode } from 'universal-env';
 校验 Web 环境
 
 ### `isMiniApp: boolean`
-校验小程序环境
+校验阿里小程序环境
+
+### `isWechatApp: boolean`
+校验微信小程序环境
 
 ### `isReactNative: boolean`
 校验 React Native 环境
