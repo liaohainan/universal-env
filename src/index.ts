@@ -10,10 +10,9 @@ const isWebPure: boolean = typeof navigator === 'object' && (navigator.appCodeNa
 export const isNode: boolean = typeof process !== 'undefined' && !!(process.versions && process.versions.node);
 export const isWeex: boolean = typeof callNative === 'function' || typeof WXEnvironment === 'object' && WXEnvironment.platform !== 'Web';
 export const isReactNative: boolean = typeof __fbBatchedBridgeConfig !== 'undefined';
-// In taobao mp'webview __sfc__ is an object
-export const isMiniApp: boolean = typeof my === 'object' && typeof my.getSystemInfo !== 'undefined' || isTaoWebview;
+export const isMiniApp: boolean = typeof my === 'object' && typeof my.getSystemInfo !== 'undefined' && !isTaoWebview;
 export const isWechatApp: boolean = typeof wx === 'object' && typeof wx.getSystemInfo !== 'undefined';
-
+// In taobao mp'webview __sfc__ is an object
 export const isWeb: boolean = isWebPure && !isMiniApp && !isWechatApp || isTaoWebview;
 
 let systemInfo: any = {};
