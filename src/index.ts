@@ -26,7 +26,8 @@ if (isWeex) {
 
 export const isAndroid = (() => {
   if (isMiniApp || isWechatApp || isWeex) {
-    return systemInfo.platform.toLowerCase() === 'android';
+    const platform = systemInfo.platform || '';
+    return platform.toLowerCase() === 'android';
   } else if (isWeb) {
     return Boolean(navigator.userAgent.match(/android/i));
   }
