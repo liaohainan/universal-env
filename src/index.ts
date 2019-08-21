@@ -4,14 +4,15 @@ declare const WXEnvironment: any;
 declare const __fbBatchedBridgeConfig: any;
 declare const my: any;
 declare const wx: any;
-
+// compatibility taobao mp
+const isTaoWebview = typeof __sfc__ !== 'undefined';
 const isWebPure: boolean = typeof navigator === 'object' && (navigator.appCodeName === 'Mozilla' || navigator.product === 'Gecko');
 export const isNode: boolean = typeof process !== 'undefined' && !!(process.versions && process.versions.node);
 export const isWeex: boolean = typeof callNative === 'function' || typeof WXEnvironment === 'object' && WXEnvironment.platform !== 'Web';
 export const isReactNative: boolean = typeof __fbBatchedBridgeConfig !== 'undefined';
 export const isMiniApp: boolean = typeof my === 'object' && typeof my.getSystemInfo !== 'undefined';
 export const isWechatApp: boolean = typeof wx === 'object' && typeof wx.getSystemInfo !== 'undefined';
-export const isWeb: boolean = isWebPure && !isMiniApp && !isWechatApp;
+export const isWeb: boolean = isWebPure && !isMiniApp && !isWechatApp || isTaoWebview;
 
 let systemInfo: any = {};
 if (isMiniApp) {
