@@ -5,7 +5,7 @@ declare const __fbBatchedBridgeConfig: any;
 declare const my: any;
 declare const wx: any;
 
-const isWeb: boolean = document && typeof document.getElementById !== 'undefined';
+export const isWeb: boolean = document && typeof document.getElementById !== 'undefined';
 export const isNode: boolean = typeof process !== 'undefined' && !!(process.versions && process.versions.node);
 export const isWeex: boolean = typeof callNative === 'function' || typeof WXEnvironment === 'object' && WXEnvironment.platform !== 'Web';
 export const isReactNative: boolean = typeof __fbBatchedBridgeConfig !== 'undefined';
