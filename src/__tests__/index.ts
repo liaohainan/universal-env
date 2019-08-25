@@ -1,4 +1,4 @@
-import { isWeb, isNode, isMiniApp, isReactNative } from '..';
+import { isWeb, isNode, isMiniApp } from '..';
 
 describe('environment value', (): void => {
   it('web environment value is true', (): void => {
@@ -7,10 +7,6 @@ describe('environment value', (): void => {
 
   it('node environment value is boolean', (): void => {
     expect(typeof isNode).toEqual('boolean');
-  });
-
-  it('react native environment value is boolean', (): void => {
-    expect(typeof isReactNative).toEqual('boolean');
   });
 
   it('mini app environment value is boolean', (): void => {

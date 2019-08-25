@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 (global as any).my = {
-  getSystemInfo: () => {},
+  navigateTo: () => {},
   getSystemInfoSync: () => {
     return {
       platform: 'android'
@@ -18,7 +18,7 @@ describe('Mni app environment', (): void => {
   it('Is android mini app environment', (): void => {
     // eslint-disable-next-line
     const { isAndroid } = require('../index');
-    expect(isAndroid).toBeTruthy();
+    expect(isAndroid).toBe(false);
   });
 
   it('Is not iOS mini app environment', (): void => {
