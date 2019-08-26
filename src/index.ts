@@ -7,10 +7,6 @@ declare const WXEnvironment: any;
 declare const my: any;
 declare const wx: any;
 
-let _systemInfo: SystemInfo = {
-  platform: ''
-};
-
 function checkNavigator(): boolean {
   return (
     typeof navigator === 'object' &&
@@ -36,53 +32,49 @@ function checkWeex(): boolean {
   );
 }
 
-function checkMpType(container): boolean {
-  return (
-    container !== null && typeof container.navigateTo === 'function'
-  );
-}
-
 function getMpSystemInfo(container): SystemInfo {
   return container.getSystemInfoSync();
 }
 
-function getSystemInfo(): SystemInfo {
-  if (_systemInfo.platform.length === 0) {
-    if (isMiniApp) {
-      return _systemInfo = getMpSystemInfo(my);
-    }
-    if (isWechatMiniprogram) {
-      return _systemInfo = getMpSystemInfo(wx);
-    }
-    if (isWeex) {
-      return _systemInfo = navigator;
-    }
+function getSystemInfo(): SystemInfo | void {
+  if (isMiniApp) {
+    return getMpSystemInfo(my);
   }
-  return _systemInfo;
+  if (isWechatMiniprogram) {
+    return getMpSystemInfo(wx);
+  }
+  if (isWeex) {
+    return navigator;
+  }
 }
 
-function checkPlatform(platform): boolean | void | string {
+function checkPlatform(platform, systemInfo): boolean {
   switch (platform) {
     case 'ios':
       if (isWeb) {
         return Boolean(navigator.userAgent.match(/(iphone|ipod|ipad)/i));
       }
       return (
-        ['ios', 'iOS', 'iPhone OS'].indexOf(getSystemInfo().platform) > -1
+        ['ios', 'iOS', 'iPhone OS'].indexOf(systemInfo.platform) > -1
       );
     case 'android':
       if (isWeb) {
         return Boolean(navigator.userAgent.match(/android/i));
       }
-      return getSystemInfo().platform.toLowerCase() === 'android';
+      return systemInfo.platform.toLowerCase() === 'android';
+    default:
+      return false;
   }
 }
 
 export const isWeb = checkNavigator() && checkDOM();
 export const isNode = checkProcess();
 export const isWeex = checkWeex();
-export const isMiniApp = checkMpType(typeof my === 'object' ? my : null);
-export const isWechatMiniprogram = checkMpType(typeof wx === 'object' ? wx : null);
-export const isAndroid = checkPlatform('android');
-export const isIOS = checkPlatform('ios');
+export const isMiniApp = typeof my === 'object' && typeof my.navigateTo === 'function';
+export const isWechatMiniprogram = typeof wx === 'object' && typeof wx.navigateTo === 'function';
+
+const systemInfo = getSystemInfo();
+
+export const isAndroid = checkPlatform('android', systemInfo);
+export const isIOS = checkPlatform('ios', systemInfo);
 
