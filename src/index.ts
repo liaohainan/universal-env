@@ -54,14 +54,20 @@ function checkPlatform(platform, systemInfo): boolean {
       if (isWeb) {
         return Boolean(navigator.userAgent.match(/(iphone|ipod|ipad)/i));
       }
-      return (
-        ['ios', 'iOS', 'iPhone OS'].indexOf(systemInfo.platform) > -1
-      );
+      if (systemInfo) {
+        return (
+          ['ios', 'iOS', 'iPhone OS'].indexOf(systemInfo.platform) > -1
+        );
+      }
+      return false;
     case 'android':
       if (isWeb) {
         return Boolean(navigator.userAgent.match(/android/i));
       }
-      return systemInfo.platform.toLowerCase() === 'android';
+      if (systemInfo) {
+        return systemInfo.platform.toLowerCase() === 'android';
+      }
+      return false;
     default:
       return false;
   }
